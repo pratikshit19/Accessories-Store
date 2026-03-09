@@ -12,14 +12,13 @@ if (process.env.NODE_ENV === "production") {
   // 1. Point to the correct nested 'dist' folder
   // __dirname is .../store/backend
   // .. goes to .../store
-  const buildPath = path.join(__dirname, "../frontend/frontend/dist");
+  app.use(express.static(path.join(__dirname, "../frontend/frontend/dist")));
   
-  app.use(express.static(buildPath));
-  
-  app.get("*", (req, res) => {
-    // 2. Use the same buildPath variable to find index.html
-    res.sendFile(path.resolve(buildPath, "index.html"));
-  });
+  app.get("/*", (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname, "../frontend/frontend/dist/index.html")
+  );
+});
 }
 connectDB();
 const PORT = process.env.PORT || 5000;
