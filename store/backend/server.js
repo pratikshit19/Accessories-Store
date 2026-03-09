@@ -1,4 +1,4 @@
-require("dotenv").config();   // must be FIRST
+require("dotenv").config();
 const path = require("path");
 const connectDB = require("./src/config/db");
 const app = require("./src/app");

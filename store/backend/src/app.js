@@ -1,4 +1,5 @@
 const express = require("express");
+const app = express();
 const cors = require("cors");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
@@ -9,7 +10,6 @@ const errorHandler = require("./middleware/errorMiddleware");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
-const app = express();
 
 app.use(cors());
 app.use(express.json());
