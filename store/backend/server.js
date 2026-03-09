@@ -9,10 +9,16 @@ app.use("/api/payment", paymentRoutes);
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./frontend/build")));
+  // 1. Point to the correct nested 'dist' folder
+  // __dirname is .../store/backend
+  // .. goes to .../store
+  const buildPath = path.join(__dirname, "../frontend/frontend/dist");
+  
+  app.use(express.static(buildPath));
   
   app.get("/:path*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./frontend/build", "index.html"));
+    // 2. Use the same buildPath variable to find index.html
+    res.sendFile(path.resolve(buildPath, "index.html"));
   });
 }
 connectDB();
