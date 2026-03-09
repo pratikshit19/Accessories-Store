@@ -9,16 +9,13 @@ app.use("/api/payment", paymentRoutes);
 
 
 if (process.env.NODE_ENV === "production") {
-  // 1. Point to the correct nested 'dist' folder
-  // __dirname is .../store/backend
-  // .. goes to .../store
-  app.use(express.static(path.join(__dirname, "../frontend/frontend/dist")));
-  
-  app.get("/*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "../frontend/frontend/dist/index.html")
-  );
-});
+  const distPath = path.join(__dirname, "../frontend/frontend/dist");
+
+  app.use(express.static(distPath));
+
+  app.use((req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
 }
 connectDB();
 const PORT = process.env.PORT || 5000;
