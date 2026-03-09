@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
   
   app.use(express.static(buildPath));
   
-  app.get("/:path*", (req, res) => {
+  app.get("*", (req, res) => {
     // 2. Use the same buildPath variable to find index.html
     res.sendFile(path.resolve(buildPath, "index.html"));
   });
