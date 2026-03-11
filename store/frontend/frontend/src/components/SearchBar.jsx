@@ -13,7 +13,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex items-center border border-gray-300 rounded shadow-sm overflow-hidden w-64 md:w-80">
+    <div className="bg-[#242426] flex items-center border border-neutral-800 rounded shadow-sm overflow-hidden w-64 md:w-80">
       {/* Input */}
       <input
         type="text"
@@ -27,7 +27,7 @@ export default function SearchBar() {
       {/* Button */}
       <button
         onClick={handleSearch}
-        className="bg-black text-white px-4 py-2 hover:bg-gray-800 transition flex items-center justify-center"
+        className="bg-black text-white px-4 py-2 hover:bg-gray-800 transition flex items-center justify-center cursor-pointer"
       >
         <BiSearch className="text-lg" />
       </button>

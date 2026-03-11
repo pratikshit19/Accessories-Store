@@ -52,29 +52,29 @@ export default function Admin() {
 
   return (
     <div className="p-6 md:p-10 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-center md:text-left">
+      <h1 className="text-neutral-300 text-3xl font-bold mb-8 text-center md:text-left">
         Admin Dashboard
       </h1>
 
       {/* Add Product Form */}
-      <div className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-10 space-y-4 border border-gray-200">
-        <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
+      <div className="bg-[#242426] p-6 md:p-8 rounded-lg shadow-md mb-10 space-y-4 border-neutral-800 border">
+        <h2 className="text-neutral-300 ext-xl font-semibold mb-4">Add New Product</h2>
         <input
           name="name"
           placeholder="Product Name"
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           onChange={handleChange}
         />
         <input
           name="price"
           placeholder="Price"
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           onChange={handleChange}
         />
         <input
           type="file"
           name="image"
-          className="w-full"
+          className="w-full text-neutral-300"
           onChange={(e) =>
             setForm({ ...form, image: e.target.files[0] })
           }
@@ -82,12 +82,12 @@ export default function Admin() {
         <textarea
           name="description"
           placeholder="Description"
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           onChange={handleChange}
         />
         <button
           onClick={addProduct}
-          className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition"
+          className="bg-neutral-200 text-black px-6 py-3 rounded hover:bg-gray-800 transition"
         >
           Add Product
         </button>
@@ -98,7 +98,7 @@ export default function Admin() {
         {products.map((p) => (
           <div
             key={p._id}
-            className="border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition flex flex-col"
+            className="border border-neutral-700 rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition flex flex-col"
           >
             <img
               src={p.image}
@@ -106,11 +106,11 @@ export default function Admin() {
               className="h-48 w-full object-cover"
             />
             <div className="p-4 flex flex-col flex-1">
-              <h2 className="font-semibold text-lg">{p.name}</h2>
-              <p className="text-gray-700 font-medium">₹{p.price}</p>
+              <h2 className="text-neutral-200 font-semibold text-lg">{p.name}</h2>
+              <p className="text-gray-500 font-medium">₹{p.price}</p>
               <button
                 onClick={() => deleteProduct(p._id)}
-                className="mt-auto bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+                className="mt-auto bg-red-600/50 text-white px-4 py-2 rounded hover:bg-red-700 transition"
               >
                 Delete
               </button>

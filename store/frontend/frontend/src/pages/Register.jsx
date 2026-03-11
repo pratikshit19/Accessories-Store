@@ -21,17 +21,17 @@ export default function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center h-full py-24 bg-gray-50">
+    <div className="flex justify-center items-center h-full py-24 bg-[#151515]">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 md:p-10 rounded-xl shadow-lg w-full max-w-md"
+        className="bg-[#212123] p-8 md:p-10 rounded-xl shadow-lg w-full max-w-md"
       >
-        <h2 className="text-3xl font-bold mb-6 text-center">Register</h2>
+        <h2 className="text-neutral-300 text-3xl font-medium mb-6 text-center">Register</h2>
 
         <input
           type="text"
           placeholder="Name"
-          className="w-full border border-gray-300 rounded px-4 py-2 mb-4 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 mb-4 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -39,7 +39,7 @@ export default function Register() {
         <input
           type="email"
           placeholder="Email"
-          className="w-full border border-gray-300 rounded px-4 py-2 mb-4 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 mb-4 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -47,7 +47,7 @@ export default function Register() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full border border-gray-300 rounded px-4 py-2 mb-6 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="text-neutral-300 bg-[#161616] w-full rounded px-4 py-2 mb-6 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

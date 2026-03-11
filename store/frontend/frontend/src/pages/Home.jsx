@@ -17,7 +17,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* HERO */}
       <div
-        className="h-[80vh] relative flex items-center justify-center"
+        className="h-screen relative flex items-center justify-center"
         style={{
           backgroundImage:
             "url('https://vearoindia.com/cdn/shop/files/4_682ce7f9-bbfd-434b-90e0-1df3fa00d37b.png?v=1770188046&width=713')",
@@ -46,8 +46,8 @@ export default function Home() {
 
       {/* PRODUCTS */}
       <div id="products" className="px-4 sm:px-6 lg:px-10 py-12">
-        <h2 className="text-3xl font-bold mb-8 text-center">Featured Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <h2 className=" text-white text-3xl font-bold mb-8 text-center">Featured Products</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map((p) => (
             <ProductCard key={p._id} product={p} />
           ))}
