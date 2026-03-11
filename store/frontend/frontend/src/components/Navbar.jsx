@@ -131,6 +131,7 @@ export default function Navbar() {
           <Link to="/contact" onClick={() => setMobileMenu(false)}>Contact</Link>
         </div>
       )}
+      
     {openSearch && (
       <div className="md:hidden px-6 pb-4">
         <SearchBar />
