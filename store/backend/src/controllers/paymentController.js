@@ -1,5 +1,7 @@
 const razorpay = require("../config/razorpay");
 const crypto = require("crypto");
+const Order = require("../models/Order");
+const Cart = require("../models/Cart");
 
 exports.createOrder = async (req, res) => {
 
@@ -47,6 +49,30 @@ exports.verifyPayment = async (req, res) => {
     .digest("hex");
 
   if (expectedSignature === razorpay_signature) {
+    // Create order in DB and clear cart
+    try {
+      const { shippingAddress, userId } = req.body;
+      if (userId) {
+        const cart = await Cart.findOne({ user: userId }).populate("items.product");
+        if (cart && cart.items.length > 0) {
+          const totalAmount = cart.items.reduce(
+            (acc, item) => acc + item.product.price * item.quantity, 0
+          );
+          await Order.create({
+            user: userId,
+            products: cart.items,
+            totalAmount,
+            paymentStatus: "paid",
+            orderStatus: "processing",
+            shippingAddress: shippingAddress || ""
+          });
+          cart.items = [];
+          await cart.save();
+        }
+      }
+    } catch (dbErr) {
+      console.error("Order creation after payment failed:", dbErr);
+    }
 
     res.json({
       success: true,

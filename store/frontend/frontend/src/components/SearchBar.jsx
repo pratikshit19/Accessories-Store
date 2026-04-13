@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BiSearch } from "react-icons/bi"; // optional icon
+import { FiSearch } from "react-icons/fi";
 
 export default function SearchBar() {
   const [keyword, setKeyword] = useState("");
@@ -8,28 +8,28 @@ export default function SearchBar() {
 
   const handleSearch = () => {
     if (keyword.trim()) {
-      navigate(`/search/${keyword}`);
+      navigate(`/search/${keyword.trim()}`);
+      setKeyword("");
     }
   };
 
   return (
-    <div className="bg-[#242426] flex items-center border border-neutral-800 rounded shadow-sm overflow-hidden w-64 md:w-80">
-      {/* Input */}
+    <div className="flex items-center border-b border-white/20 w-full focus-within:border-white/60 transition-colors">
+      <FiSearch className="text-text-muted flex-shrink-0" size={16} />
       <input
         type="text"
         placeholder="Search products..."
-        className="flex-1 px-4 focus:outline-none"
+        className="flex-1 bg-transparent text-white px-4 py-2 text-sm focus:outline-none font-light placeholder:text-text-muted/40"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        autoFocus
       />
-
-      {/* Button */}
       <button
         onClick={handleSearch}
-        className="bg-black text-white px-4 py-2 hover:bg-gray-800 transition flex items-center justify-center cursor-pointer"
+        className="text-[10px] tracking-widest uppercase text-text-muted hover:text-white transition-colors px-2 py-1 flex-shrink-0"
       >
-        <BiSearch className="text-lg" />
+        Go
       </button>
     </div>
   );
